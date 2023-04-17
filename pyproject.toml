@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "desafio-tins"
+version = "0.1.0"
+description = "Desafio para vaga de dev Python Pleno na TINS"
+authors = ["talesmm14 <talesmelquiades@hotmail.com>"]
+readme = "README.md"
+packages = [{include = "desafio_tins"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.2"
+django-environ = "^0.10.0"
+whitenoise = "^6.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
