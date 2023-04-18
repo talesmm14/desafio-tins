@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # External Apps
     # Your Apps
+    'apps.loja'
 ]
 
 MIDDLEWARE = [
@@ -100,6 +101,7 @@ DATABASES = {
         default='sqlite:////tmp/my-tmp-sqlite.db'
     )
 }
+
 
 
 # Password validation

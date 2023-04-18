@@ -8,8 +8,8 @@ WORKDIR /app
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         build-essential \
-        postgresql-client \
-        libpq-dev \
+        mariadb-client \
+        libmariadb-dev \
         rabbitmq-server \
         curl \
         gnupg \
