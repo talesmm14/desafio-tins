@@ -17,6 +17,7 @@ psycopg2-binary = "^2.9.6"
 mysqlclient = "^2.1.1"
 django-crispy-forms = "^2.0"
 crispy-bootstrap5 = "^0.7"
+django-jazzmin = "^2.6.0"
 
 
 [build-system]

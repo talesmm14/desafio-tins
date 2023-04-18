@@ -247,6 +247,21 @@ docs = ["furo (>=2021.8.17b43,<2021.9.0)", "sphinx (>=3.5.0)", "sphinx-notfound-
 testing = ["coverage[toml] (>=5.0a4)", "pytest (>=4.6.11)"]
 
 [[package]]
+name = "django-jazzmin"
+version = "2.6.0"
+description = "Drop-in theme for django admin, that utilises AdminLTE 3 & Bootstrap 4 to make yo' admin look jazzy"
+category = "main"
+optional = false
+python-versions = ">=3.6.2"
+files = [
+    {file = "django_jazzmin-2.6.0-py3-none-any.whl", hash = "sha256:fb554c2d564649c65243b13385121fdbdda58521f49544f9d7cb9c414a4908d4"},
+    {file = "django_jazzmin-2.6.0.tar.gz", hash = "sha256:5bb07055cf19183030724f976904fd8b6337559727959340a43832fab0531812"},
+]
+
+[package.dependencies]
+django = ">=2.2"
+
+[[package]]
 name = "gunicorn"
 version = "20.1.0"
 description = "WSGI HTTP Server for UNIX"
@@ -510,4 +525,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "54b4ac5600bf064e977222cd8d995042f700e160ef9580fc41c2a0f7aec2211b"
+content-hash = "f786ba91cb21b7f6a6b21b104300e52c25f28c774ed1e4cbd9e3683ea60d42b6"
