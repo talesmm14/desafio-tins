@@ -9,7 +9,3 @@ class Endereco(models.Model):
     numero = models.CharField(max_length=50)
     titulo = models.CharField(max_length=50, blank=True, null=True)
     padrao = models.BooleanField(default=False, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'tbl_endereco'
