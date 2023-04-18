@@ -150,3 +150,21 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Celery and RabbitMQ Config
+RABBITMQ = {
+    "PROTOCOL": "amqp",  # in prod change with "amqps"
+    "HOST": env("RABBITMQ_HOST"),
+    "PORT": env("RABBITMQ_PORT_1"),
+    "USER": env("RABBITMQ_USER"),
+    "PASSWORD": env("RABBITMQ_PASSWORD"),
+}
+
+# Celery settings
+CELERY_ENABLED = True
+CELERY_BROKER_URL = f"{RABBITMQ['PROTOCOL']}://{RABBITMQ['USER']}:" \
+                    f"{RABBITMQ['PASSWORD']}@{RABBITMQ['HOST']}:{RABBITMQ['PORT']}//"
+
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
