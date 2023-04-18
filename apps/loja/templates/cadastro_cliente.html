@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Cadastro de Cliente</h1>
+   <form method="post" action="">
+
+        {% crispy form  %}
+        {% crispy formset %}
+
+        <input class="submit" type="submit" value="Submit data">
+
+    </form>
+{% endblock %}
