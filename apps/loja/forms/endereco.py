@@ -1,9 +1,6 @@
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
 from django import forms
 from django.forms import inlineformset_factory
 
-from apps.loja.forms import ClienteForm
 from apps.loja.models import Endereco, ClienteEndereco, Cliente
 
 
@@ -12,6 +9,9 @@ class EnderecoForm(forms.ModelForm):
         model = Endereco
         fields = (
             'cep',
+            'logradouro',
+            'bairro',
+            'localidade',
             'numero',
             'titulo',
         )

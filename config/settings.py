@@ -222,7 +222,8 @@ JAZZMIN_SETTINGS = {
     # override change forms on a per modeladmin basis
     "changeform_format_overrides": {
         "auth.user": "vertical_tabs",
-        "auth.group": "vertical_tabs"
+        "auth.group": "vertical_tabs",
+        "loja.cliente": "collapsible"
     },
     # Add a language dropdown into the admin
     "language_chooser": False,

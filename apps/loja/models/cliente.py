@@ -20,7 +20,7 @@ class Cliente(models.Model):
 class ClienteEndereco(models.Model):
     cod_cliente = models.ForeignKey(Cliente, models.PROTECT, blank=True, null=True)
     cod_endereco = models.ForeignKey('Endereco', models.PROTECT, blank=True, null=True)
-    default = models.BooleanField(default=False, blank=True, null=True)
+    default = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ('cod_cliente', 'cod_endereco')
