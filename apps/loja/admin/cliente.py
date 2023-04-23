@@ -6,7 +6,8 @@ from apps.loja.models import Cliente, ClienteEndereco
 
 
 class ClienteEnderecoForm(forms.ModelForm):
-    cep = forms.CharField(label="Cep", max_length=100)
+    cep = forms.CharField(label="Cep", max_length=10)
+    buscar = forms.CharField(widget=forms.TextInput(attrs={'type': 'button', 'value': 'Buscar CEP', 'onclick': 'buscarEnderecoPorCep(this.id.match(/-(\d+)-/)[1]);'}))
     logradouro = forms.CharField(max_length=100)
     bairro = forms.CharField(max_length=100)
     localidade = forms.CharField(max_length=100)
@@ -18,6 +19,9 @@ class ClienteEnderecoForm(forms.ModelForm):
         fields = (
             'default',
         )
+
+    class Media:
+        js = ('js/cep/buscarCepViaCep.js',)
 
     def __init__(self, *args, **kwargs):
         super(ClienteEnderecoForm, self).__init__(*args, **kwargs)
