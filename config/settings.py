@@ -223,7 +223,8 @@ JAZZMIN_SETTINGS = {
     "changeform_format_overrides": {
         "auth.user": "vertical_tabs",
         "auth.group": "vertical_tabs",
-        "loja.cliente": "collapsible"
+        "loja.cliente": "collapsible",
+        "loja.pedido": "single"
     },
     # Add a language dropdown into the admin
     "language_chooser": False,

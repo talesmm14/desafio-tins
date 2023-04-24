@@ -52,9 +52,7 @@ class Pedido(models.Model):
             pedido.email_enviado = True
             pedido.save(update_fields=['email_enviado'])
         except Exception as e:
-            pedido = Pedido.objects.get(id=pedido_id)
-            pedido.email_enviado = False
-            pedido.save(update_fields=['email_enviado'])
+            print(e)
 
     def save(
         self, force_insert=False, force_update=False, using=None, update_fields=None
