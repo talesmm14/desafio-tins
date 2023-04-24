@@ -6,4 +6,4 @@ from apps.loja.models import Pedido
 @receiver(post_save, sender=Pedido)
 def enviar_email_do_pedido(sender, instance, **kwargs):
     if not instance.email_enviado:
-        instance.enviar_email.delay()
+        instance.enviar_email_pedido.delay(instance.pk)

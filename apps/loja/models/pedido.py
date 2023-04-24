@@ -26,13 +26,14 @@ class Pedido(models.Model):
                 return
 
     @app.task(bind=True, max_retries=3)
-    def enviar_email(self):
+    def enviar_email_pedido(self, pedido_id):
         try:
-            endereco = self.cod_cliente.clienteendereco_set.filter(default=True).first().cod_endereco
+            pedido = Pedido.objects.get(id=pedido_id)
+            endereco = pedido.cod_cliente.clienteendereco_set.filter(default=True).first().cod_endereco
             send_mail(
-                f'Pedido {self.codigo} envviado.',
+                f'Pedido {pedido.codigo} envviado.',
                 f'''
-                        Informamos que seu pedido #{self.codigo} foi enviado com sucesso.
+                        Informamos que seu pedido #{pedido.codigo} foi enviado com sucesso.
 
                         Enviado para {endereco.titulo}, 
                         CEP {endereco.cep}, 
@@ -45,14 +46,15 @@ class Pedido(models.Model):
                         Equipe TINS vendas.
                         ''',
                 'comercial@tins.com',
-                [f'{self.cod_cliente.email}'],
+                [f'{pedido.cod_cliente.email}'],
                 fail_silently=False,
             )
-            self.email_enviado = True
-            self.save(update_fields=['email_enviado'])
+            pedido.email_enviado = True
+            pedido.save(update_fields=['email_enviado'])
         except Exception as e:
-            self.email_enviado = False
-            self.save(update_fields=['email_enviado'])
+            pedido = Pedido.objects.get(id=pedido_id)
+            pedido.email_enviado = False
+            pedido.save(update_fields=['email_enviado'])
 
     def save(
         self, force_insert=False, force_update=False, using=None, update_fields=None
