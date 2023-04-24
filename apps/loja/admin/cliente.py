@@ -7,12 +7,23 @@ from apps.loja.models import Cliente, ClienteEndereco
 
 class ClienteEnderecoForm(forms.ModelForm):
     cep = forms.CharField(label="Cep", max_length=10)
-    buscar = forms.CharField(widget=forms.TextInput(attrs={'type': 'button', 'value': 'Buscar CEP', 'onclick': 'buscarEnderecoPorCep(this.id.match(/-(\d+)-/)[1]);'}))
+    buscar = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'type': 'button',
+                'value': 'Buscar CEP',
+                'onclick': 'buscarEnderecoPorCep(this.id.match(/-(\d+)-/)[1]);'
+            }
+        ),
+        required=False
+    )
     logradouro = forms.CharField(max_length=100)
     bairro = forms.CharField(max_length=100)
     localidade = forms.CharField(max_length=100)
     numero = forms.CharField(max_length=100)
     titulo = forms.CharField(max_length=100)
+    default = forms.BooleanField(widget=forms.CheckboxInput(attrs={'onclick': 'verificarOutrosDefaults(this)'}),
+                                 required=False)
 
     class Meta:
         model = ClienteEndereco
@@ -21,7 +32,7 @@ class ClienteEnderecoForm(forms.ModelForm):
         )
 
     class Media:
-        js = ('js/cep/buscarCepViaCep.js',)
+        js = ('js/cep/buscarCepViaCep.js', 'js/cep/validarDefault.js')
 
     def __init__(self, *args, **kwargs):
         super(ClienteEnderecoForm, self).__init__(*args, **kwargs)
@@ -35,7 +46,7 @@ class ClienteEnderecoForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        endereco_data = cleaned_data
+        endereco_data = cleaned_data.copy()
         endereco_data.pop('default')
         endereco_data.pop('cod_cliente')
         endereco_form = EnderecoForm(data=endereco_data)
@@ -45,6 +56,7 @@ class ClienteEnderecoForm(forms.ModelForm):
         if endereco:
             endereco.save()
             self.instance.cod_endereco = endereco
+
         return cleaned_data
 
 
