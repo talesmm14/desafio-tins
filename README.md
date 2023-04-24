@@ -16,6 +16,7 @@ Considerando o sql em anexo, temos o seguinte levantamento de requisitos para um
 Como já está nos requisitos da vaga, essa aplicação de ser feita em django, utilizando qualquer template desde que não seja o padrão.
 
 Será considerado um PLUS se conseguir entregar o sistema rodando em docker.
+
 ```
 
 # Configurando projeto
@@ -50,7 +51,7 @@ Será considerado um PLUS se conseguir entregar o sistema rodando em docker.
 - Instale o [Docker](https://www.docker.com/).
 - Caso queira criar um usuário administrador, execute o seguinte comando ```docker compose run app python manage.py createsuperuser```
 - Agora para iniciar a aplicação execute ```docker compose up -d```
-- Acesse [localhost:8000](http://127.0.0.1:8000)
+- Acesse [localhost:8000](http://0.0.0.0:8000)
 
 
 ### Manualmente
@@ -61,3 +62,8 @@ Será considerado um PLUS se conseguir entregar o sistema rodando em docker.
 - Caso queira criar um usuário administrador, execute o seguinte comando ```./manage.py createsuperuser```
 - Agora para iniciar a aplicação execute ```./manage.py runserver```
 - Acesse [localhost:8000](http://127.0.0.1:8000)
+
+
+# ADMIN COM JAZZMIN TEMPLATE
+- Crie o usuário administrador
+- Acesse [admin-site](0.0.0.0:8000/admin)
