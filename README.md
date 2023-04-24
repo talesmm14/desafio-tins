@@ -69,7 +69,7 @@ Será considerado um PLUS se conseguir entregar o sistema rodando em docker.
 
 # ADMIN COM JAZZMIN TEMPLATE
 - Crie o usuário administrador
-- Acesse [admin-site](0.0.0.0:8000/admin)
+- Acesse [admin-site](0.0.0.0:8000/)
 
 ## Tela de Login
 ![Tela de login](docs/images/login.jpeg)
