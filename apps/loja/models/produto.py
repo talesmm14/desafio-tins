@@ -26,3 +26,6 @@ class Produto(models.Model):
         if not self.codigo:
             self.criar_cod_produto()
         super().save(force_insert=False, force_update=False, using=None, update_fields=None)
+
+    def __str__(self):
+        return self.titulo

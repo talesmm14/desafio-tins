@@ -13,3 +13,7 @@ class ProdutoAdmin(admin.ModelAdmin):
     readonly_fields = (
         'codigo',
     )
+    search_fields = (
+        'titulo',
+        'codigo',
+    )
