@@ -1,9 +1,11 @@
 import random
 
+from django.core.mail import send_mail
 from django.core.validators import MinLengthValidator
 from django.db import models
 
 from apps.loja.models.cliente import Cliente
+from config.celery import app
 
 
 class Pedido(models.Model):
@@ -22,6 +24,35 @@ class Pedido(models.Model):
             if not Pedido.objects.filter(codigo=cod_criado).exists():
                 self.codigo = cod_criado
                 return
+
+    @app.task(bind=True, max_retries=3)
+    def enviar_email(self):
+        try:
+            endereco = self.cod_cliente.clienteendereco_set.filter(default=True).first().cod_endereco
+            send_mail(
+                f'Pedido {self.codigo} envviado.',
+                f'''
+                        Informamos que seu pedido #{self.codigo} foi enviado com sucesso.
+
+                        Enviado para {endereco.titulo}, 
+                        CEP {endereco.cep}, 
+                        Logradouro {endereco.logradouro},
+                        Bairro {endereco.bairro},
+                        Localidade {endereco.localidade},
+                        Numero {endereco.numero},
+
+                        Atenciosamente,
+                        Equipe TINS vendas.
+                        ''',
+                'comercial@tins.com',
+                [f'{self.cod_cliente.email}'],
+                fail_silently=False,
+            )
+            self.email_enviado = True
+            self.save(update_fields=['email_enviado'])
+        except Exception as e:
+            self.email_enviado = False
+            self.save(update_fields=['email_enviado'])
 
     def save(
         self, force_insert=False, force_update=False, using=None, update_fields=None
