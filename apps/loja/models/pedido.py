@@ -31,7 +31,7 @@ class Pedido(models.Model):
             pedido = Pedido.objects.get(id=pedido_id)
             endereco = pedido.cod_cliente.clienteendereco_set.filter(default=True).first().cod_endereco
             send_mail(
-                f'Pedido {pedido.codigo} envviado.',
+                f'Pedido {pedido.codigo} enviado.',
                 f'''
                         Informamos que seu pedido #{pedido.codigo} foi enviado com sucesso.
 

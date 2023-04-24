@@ -45,6 +45,9 @@ Será considerado um PLUS se conseguir entregar o sistema rodando em docker.
 - - A variável ```RABBITMQ_PASSWORD``` pode ser inicializada com a senha do rabbitmq.
 - - A variável ```RABBITMQ_PORT_1``` pode ser inicializada com uma das portas para acessar o RabbitMQ, o padrão é ```5672```.
 - - A variável ```RABBITMQ_PORT_2``` pode ser inicializada com uma das portas para acessar o RabbitMQ, o padrão é ```15672```.
+- - A variável ```EMAIL_HOST``` pode ser inicializada com o host do provedor de email, exemplo ```smtp.gmail.com```.
+- - A variável ```EMAIL_HOST_USER``` pode ser inicializada com o usuário do provedor de email.
+- - A variável ```EMAIL_HOST_PASSWORD``` pode ser inicializada com a senha do provedor de email.
 
 
 ### Utilizando o Docker
