@@ -32,7 +32,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: ./start.sh
+    command: bash -c "sleep 10 && python manage.py migrate && gunicorn config.wsgi:application -w 2 -b :${APP_PORT}"
     volumes:
       - .:/app
     ports:
