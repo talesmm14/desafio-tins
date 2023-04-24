@@ -73,4 +73,9 @@ class ClienteAdmin(admin.ModelAdmin):
         'cpf',
         'email',
     )
+    search_fields = (
+        'cpf',
+        'nome',
+        'email'
+    )
     inlines = [ClienteEnderecoInline]

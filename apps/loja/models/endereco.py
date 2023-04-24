@@ -15,3 +15,5 @@ class Endereco(models.Model):
         self.cep = re.sub(r'[^0-9]', '', self.cep)
         super(Endereco, self).clean()
 
+    def __str__(self):
+        return self.titulo

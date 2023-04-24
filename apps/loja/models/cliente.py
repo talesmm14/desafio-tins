@@ -16,6 +16,9 @@ class Cliente(models.Model):
     def clean(self):
         self.cpf = re.sub(r'[^0-9]', '', self.cpf)
 
+    def __str__(self):
+        return f'{self.nome} - {self.cpf}'
+
 
 class ClienteEndereco(models.Model):
     cod_cliente = models.ForeignKey(Cliente, models.PROTECT, blank=True, null=True)
@@ -24,3 +27,6 @@ class ClienteEndereco(models.Model):
 
     class Meta:
         unique_together = ('cod_cliente', 'cod_endereco')
+
+    def __str__(self):
+        return self.cod_endereco.titulo

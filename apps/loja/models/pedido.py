@@ -8,17 +8,17 @@ from apps.loja.models.cliente import Cliente
 
 class Pedido(models.Model):
     codigo = models.CharField(
-        max_length=6,
-        validators=[MinLengthValidator(6)],
+        max_length=11,
+        validators=[MinLengthValidator(11)],
         unique=True, blank=True, null=True, editable=False
     )
     data = models.DateTimeField(blank=True, null=True)
     cod_cliente = models.ForeignKey(Cliente, models.PROTECT)
-    email_enviado = models.IntegerField(blank=True, null=True)
+    email_enviado = models.BooleanField(default=False)
 
     def criar_cod_pedido(self):
         while True:
-            cod_criado = ''.join(random.sample('0123456789', 6))
+            cod_criado = ''.join(random.choices('0123456789', k=11))
             if not Pedido.objects.filter(codigo=cod_criado).exists():
                 self.codigo = cod_criado
                 return
