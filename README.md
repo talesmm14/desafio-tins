@@ -67,3 +67,17 @@ Será considerado um PLUS se conseguir entregar o sistema rodando em docker.
 # ADMIN COM JAZZMIN TEMPLATE
 - Crie o usuário administrador
 - Acesse [admin-site](0.0.0.0:8000/admin)
+
+## Tela de Login
+![Tela de login](docs/images/login.jpeg)
+## Cadastro de Cliente
+![Tela de login](docs/images/cadastro_cliente.jpeg)
+- O cliente pode pesquisar o cep inserido e ter as informações coletadas da api viacep
+- Apenas um endereço pode ser marcado como default
+## Cadastro de Produto
+![Tela de login](docs/images/cadastro_produto.jpeg)
+## Cadastro de Pedido
+![Tela de login](docs/images/cadastro_pedido.jpeg)
+- O campo ``Cod Cliente`` pode ser pesquisado por cpf ou nome.
+## Email enviado apos cadastro de pedido
+![Tela de login](docs/images/email_pedido.jpeg)
